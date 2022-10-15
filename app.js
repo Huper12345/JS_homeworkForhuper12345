@@ -27,7 +27,7 @@ switch (n) {
     default :
         alert( "Ошибка, возможно вы ввели неправильное значение. Повторите попытку" );
         break;
-    
+
 }
 
 function calcVcube() {
