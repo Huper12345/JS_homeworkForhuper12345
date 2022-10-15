@@ -1,12 +1,12 @@
-let a = prompt ( "Введите функцию. Варинаты: Объём Куба; Объём параллелепипеда", "Объём куба" );
+let a = prompt ( "Введите функцию. Варинаты: Объём Куба (1); Объём прямоугольного параллелепипеда (3)", "1" );
 
 switch (a) {
-    case "Объём куба":
+    case "1":
         calcVcube(a);
         break;
     
-    case "Объём параллелепипеда" :
-        calcVparalelp(a);
+    case "3" :
+        calcVPparalelp(a);
         break;
     
 }
@@ -24,14 +24,14 @@ function calcVcube(n) {
     }
 }
 
-function calcVparalelp (a) {
+function calcVPparalelp (a) {
     
     let n = prompt ( "Введите ширину параллелепипеда", 1);
     let b = prompt ( "Введите длинну параллелепипеда", 1);
     let h = prompt ( "Введите высоту паралеллепипеда", 1 );
 
     if (a && b && h >= 1) {
-        alert( `Объём (V) параллелепипеда = ${(n * b) * h}` );
+        alert( `Объём (V) прямоугольного параллелепипеда = ${(n * b) * h}` );
     } else {
         alert ( "Ошибка введите другое значение" );
     }
