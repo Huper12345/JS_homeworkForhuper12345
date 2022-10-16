@@ -7,17 +7,18 @@ const tax = (phonePrice / 100) * 20;
 
 let phoneSum = phonePrice + phoneAccesories + tax;
 
-
 calcPhonesum();
+proposeBuyphone();
 
-let message = confirm( 'Желаете купить телефон?' );
+function proposeBuyphone() {
+    let message = confirm( 'Желаете купить телефон?' );
 
 if (message == true) {
     buyPhone();
 } else {
     alert( "Очень жаль! Когда будете готовы возвращайтесь." )
 }
-
+}
 
 function buyPhone() {
     let balance = +prompt( 'Введите баланс банкоского счета', 1 );
@@ -28,9 +29,25 @@ function buyPhone() {
         let message = confirm ( `Вы можете купить ${possibleBuy.toFixed(0)} телефонов. Желаете продолжить?` );
 
         if (message == true) {
-            for( let i = 0; i < balance ; balance = balance - phoneSum ) {
-                if( balance < phoneSum) {
-                    alert( `Поздравляем с покупкой. Остаток баланса = ${showPrice(balance)}$` );
+            for ( let i = 0; i < balance ; balance = balance - phoneSum ) {
+                if ( balance < phoneSum) {
+                    alert( `Поздравляем с покупкой. Остаток баланса = ${showPrice(balance)}` );
+                    
+                    if (balance > phoneAccesories) {
+                        
+                        let buyAddaccesories = confirm ( 'Желаете купить дополнительные аксесуары на остаток денег?');
+                        
+                        if(buyAddaccesories == true) {
+
+                            let acsessories = balance / phoneAccesories;
+                           
+                            for (let i = 0; i < balance; balance = balance - phoneAccesories) {
+                                if (balance < phoneAccesories) {
+                                    alert( `Вы купили еще ${Math.floor(acsessories)} аксесуара. Остаток баланса ${showPrice(balance)}` );
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
@@ -46,7 +63,6 @@ function buyPhone() {
    } 
 }
 
-// Общая сумма покупки
 function calcPhonesum() {
     alert( 
     `Общая сумма покупки = ${showPrice(phoneSum)}. 
@@ -55,7 +71,6 @@ function calcPhonesum() {
      Налог = ${showPrice(tax)}.` );
 }
 
-// 2 знака после запятой
 function showPrice(value) {
     return value.toFixed(2) + "$";
 }
