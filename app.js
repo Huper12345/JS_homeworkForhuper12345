@@ -1,116 +1,61 @@
 "use strict";
 
-let n = prompt 
-( "Введите функцию. Варинаты: Объём Куба (1); Объём параллелепипеда (2) ; Объём прямоугольного параллелепипеда (3); Объём призмы (4) ; Объём пирамиды(5)", "1" 
-);
+const phonePrice = 23;
+const phoneAccesories = 5;
 
-switch (n) {
-    case "1":
-        calcVcube();
-        break;
-    
-    case "2" :
-        calcVparalelp();
-        break;
-    
-    case "3" :
-        calcVPparalelp();
-        break;
-    
-    case "4" :
-        calcVprizm();
-        break;
-    
-    case "5" :
-        calcVpyr();
-        break;
-    default :
-        alert( "Ошибка, возможно вы ввели неправильное значение. Повторите попытку" );
-        break;
+const tax = (phonePrice / 100) * 20;
 
+let phoneSum = phonePrice + phoneAccesories + tax;
+
+
+calcPhonesum();
+
+let message = confirm( 'Желаете купить телефон?' );
+
+if (message == true) {
+    buyPhone();
+} else {
+    alert( "Очень жаль! Когда будете готовы возвращайтесь." )
 }
 
-function calcVcube() {
-    
-    let b = prompt ("Введите чему равно ребро куба (b)", "1");
 
-    if (b >= 1) {
+function buyPhone() {
+    let balance = +prompt( 'Введите баланс банкоского счета', 1 );
+
+    if (balance / phoneSum > 1) {
         
-        let v = b ** 3;
-        let s = 6 * (b * b);
-        let d = b * Math.sqrt(3);
-        
-        alert( 
-            `Обьем куба (V) =  ${v} 
-             Площадь поверхности (s) = ${s}
-             Длинна диагонали (d) = ${d}` 
-        );
-    } else {
-        alert ( "Ошибка введите другое значение" );
-    }
-}
+        let possibleBuy = balance / phoneSum;
+        let message = confirm ( `Вы можете купить ${possibleBuy.toFixed(0)} телефонов. Желаете продолжить?` );
 
-function calcVparalelp() {
-    
-    let a = prompt( "Введите длинну основания паралеллепипеда (a)", 1 );
-    let b = prompt ( "Введите ширину основания параллелепипеда (b)", 1 );
-    let h = prompt( "Введите высоту параллелепипеда (h)", 1 )
+        if (message == true) {
+            for( let i = 0; i < balance ; balance = balance - phoneSum ) {
+                if( balance < phoneSum) {
+                    alert( `Поздравляем с покупкой. Остаток баланса = ${showPrice(balance)}$` );
+                }
+            }
 
-    let v = (a * b) * h;
-    let s = 2 * (a * b) + (2 * ((a * b) + (a * h)));
-
-    if (a && b && h >= 1) {
-        alert( `Объём (V) параллелепипеда = ${v}. Площадь поверхности = ${s}` );
-    } else {
-        alert ( "Ошибка введите другое значение" );
-    }
-}
-
-function calcVPparalelp () {
-    
-    let a = prompt ( "Введите ширину прямоугольного параллелепипеда (a)", 1);
-    let b = prompt ( "Введите длинну прямоугольного параллелепипеда (b)", 1);
-    let h = prompt ( "Введите высоту прямоугольного паралеллепипеда (h)", 1 );
-
-    let v = a * b * h
-    let s = ( 2 * a * b ) + ( 2 * a * h ) + ( 2 * b * h); // Площадь поверхности
-    let d = Math.sqrt( (a ** 2) + (b ** 2) + (h ** 2) ); // Длинна диагонали
-
-    if (a && b && h >= 1) {
-        alert( `Объём (V) прямоугольного параллелепипеда = ${v}. 
-        Площадь поверхности = ${s}
-        Длинна диагонали (d) = ${d}`
-        )
-    } else {
-        alert ( "Ошибка введите другое значение" );
-    }
-}
-
-function calcVprizm() {
-
-    let s = prompt( "Введите площадь основания призмы (s)", 1 );
-    let h = prompt( "Введите высоту призмы (h)", 1 )
-
-    if (s && h >= 1) {
-        alert( `Объём (V) призмы = ${s * h}` );
-    } else {
-        alert ( "Ошибка введите другое значение" );
-    }
-}
-
-function calcVpyr() {
-
-        let a = prompt( "Введите длинну основания Четырехугольной пирамиды (a)", 1 );
-        let b = prompt ( "Введите ширину основания Четырехугольной пирамиды (b)", 1 );
-        let h = prompt( "Введите высоту Четырёхугольной пирамиды (h)", 1 )
-        
-        let sf = a * b;
-        let s = (a * b) + (2 * ((a * b) + (a * h)));
-
-        if (a && h && b >= 1) {
-            alert( `Объём (V) Четырехугольной пирамиды = ${(sf / 3) * h}. Площадь поверхности = ${s}` );
         } else {
-            alert ( "Ошибка введите другое значение" );
+            alert( 'Надеемся вы передумаете! Увидимся в следующий раз.' );
         }
-    } 
-    
+
+   } else if (balance / phoneSum < 1) {
+    alert( 'К сожалению у Вас не хватает денег. Попробуйте в другой раз.' );
+
+   } else {
+    alert( `Ошибка ввода данных. Повторите попытку` );
+   } 
+}
+
+// Общая сумма покупки
+function calcPhonesum() {
+    alert( 
+    `Общая сумма покупки = ${showPrice(phoneSum)}. 
+     Стоимость телефона = ${showPrice(phonePrice)}. 
+     Стоимость аксесуаров = ${showPrice(phoneAccesories)}. 
+     Налог = ${showPrice(tax)}.` );
+}
+
+// 2 знака после запятой
+function showPrice(value) {
+    return value.toFixed(2) + "$";
+}
