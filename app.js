@@ -21,7 +21,7 @@ if (message == true) {
 }
 
 function buyPhone() {
-    let balance = +prompt( 'Введите баланс банкоского счета', 1 );
+    let balance = +prompt( 'Введите баланс вашего банковского счета', 1 );
 
     if (balance / phoneSum > 1) {
         
@@ -68,7 +68,7 @@ function calcPhonesum() {
     `Общая сумма покупки = ${showPrice(phoneSum)}. 
      Стоимость телефона = ${showPrice(phonePrice)}. 
      Стоимость аксесуаров = ${showPrice(phoneAccesories)}. 
-     Налог = ${showPrice(tax)}.` );
+     Налог (20% от суммы покупки) = ${showPrice(tax)}.` );
 }
 
 function showPrice(value) {
