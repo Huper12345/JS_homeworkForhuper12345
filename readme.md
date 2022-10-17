@@ -1,1 +1,1 @@
-# Мой репозитория для задач по JavaScriptg
+# JS_homeworkForhuper12345
