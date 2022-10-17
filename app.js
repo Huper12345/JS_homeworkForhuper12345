@@ -35,7 +35,7 @@ function buyPhone() {
                     
                     if (balance > phoneAccesories) {
                         
-                        let buyAddaccesories = confirm ( 'Желаете купить дополнительные аксесуары на остаток денег?');
+                        let buyAddaccesories = confirm ( 'Желаете купить дополнительные аксесуары на остаток средств на балансе?');
                         
                         if(buyAddaccesories == true) {
 
@@ -43,7 +43,7 @@ function buyPhone() {
                            
                             for (let i = 0; i < balance; balance = balance - phoneAccesories) {
                                 if (balance < phoneAccesories) {
-                                    alert( `Вы купили еще ${Math.floor(acsessories)} аксесуара. Остаток баланса ${showPrice(balance)}` );
+                                    alert( `Вы купили еще ${Math.floor(acsessories) + getNoun(Math.floor(acsessories), " аксессуар", " аксессуара", " аксессуаров")}. Остаток баланса ${showPrice(balance)}` );
                                 }
                             }
                         }
@@ -66,11 +66,31 @@ function buyPhone() {
 function calcPhonesum() {
     alert( 
     `Общая сумма покупки = ${showPrice(phoneSum)}. 
-     Стоимость телефона = ${showPrice(phonePrice)}. 
-     Стоимость аксесуаров = ${showPrice(phoneAccesories)}. 
-     Налог (20% от суммы покупки) = ${showPrice(tax)}.` );
+Стоимость телефона = ${showPrice(phonePrice)}. 
+Стоимость аксесуаров = ${showPrice(phoneAccesories)}. 
+Налог (20%) = ${showPrice(tax)}.` 
+        );
 }
 
 function showPrice(value) {
     return value.toFixed(2) + "$";
 }
+
+
+
+// Эту функцию не совсем понял, поэтому взял готовое решение.
+function getNoun(number, one, two, five) {
+    let n = Math.abs(number);
+    n %= 100;
+    if (n >= 5 && n <= 20) {
+      return five;
+    }
+    n %= 10;
+    if (n === 1) {
+      return one;
+    }
+    if (n >= 2 && n <= 4) {
+      return two;
+    }
+    return five;
+  }
