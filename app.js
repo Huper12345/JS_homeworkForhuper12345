@@ -65,10 +65,7 @@ function buyPhone() {
 
 function calcPhonesum() {
     alert( 
-    `Общая сумма покупки = ${showPrice(phoneSum)}. 
-Стоимость телефона = ${showPrice(phonePrice)}. 
-Стоимость аксесуаров = ${showPrice(phoneAccesories)}. 
-Налог (20%) = ${showPrice(tax)}.` 
+    `Общая сумма покупки = ${showPrice(phoneSum)}.\nСтоимость телефона = ${showPrice(phonePrice)}.\nСтоимость аксесуаров = ${showPrice(phoneAccesories)}.\nНалог (20%) = ${showPrice(tax)}.`
         );
 }
 
