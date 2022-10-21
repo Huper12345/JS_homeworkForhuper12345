@@ -12,8 +12,29 @@ let obj1 = {
 	},
 }
 
+let obj2 = {
+	firstName: "Витя",
+	lastName: "Киселёв",
+	age: 45,
+	children: null,
+	dates: {
+		birthday: '26.01.1977',
+		wedding: '05.09.2000',
+		graduationFromUniversity: {
+            Marina: "Sun",
+            Alena: {
+                nine: "Cat",
+                seven: "Dog",
+            }
+        }
+	},
+    latestTrip: {
+        Minsk: '29.05.2022',
+        Barselona: '25.03.2021',
+    }
+}
 
-showObject(obj1);
+showObject(obj2);
 
 
 function showObject(obj) {
@@ -29,7 +50,7 @@ function showObject(obj) {
                 objValue[key] = "null";
             }
 
-            if (typeof objValue[key] === 'object') {
+            if (typeof objValue[key] == 'object') {
                 memory = key + " - { ";
                 console.log(memory);
                 checkObj(objValue[key]);
