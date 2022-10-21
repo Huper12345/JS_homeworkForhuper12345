@@ -13,25 +13,31 @@ let obj1 = {
 }
 
 
-function showObject(obj) {
-    let mes = "";
+showObject(obj1);
 
-    for(let key in obj ) {
+
+function showObject(obj) {
+    let memory = "";
+    
+    checkObj(obj);
+
+    function checkObj(objValue) {
         
-        if (typeof obj[key] == "string") {
-            mes = key + " - " + "'" + obj[key] + "'";
-        } else {
-            mes = key + " - " + obj[key];
-        }
-        
-        if(typeof obj[key] == "object") {
+        for (let key in objValue) {
             
-            for(let keyProp in obj[key]) {
-                mes = key + "-" + keyProp + " - " + "'" + obj[key][keyProp] + "'";
-                console.log(mes)
+            if ( objValue[key] == null) {
+                objValue[key] = "null";
+            }
+
+            if (typeof objValue[key] === 'object') {
+                memory = key + " - { ";
+                console.log(memory);
+                checkObj(objValue[key]);
+    
+            } else {
+                memory = key + " - " + objValue[key] + " }";
+                console.log(memory);
             }
         }
-        console.log(mes)
     }
 }
-showObject(obj1);
