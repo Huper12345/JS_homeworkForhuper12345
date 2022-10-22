@@ -2,7 +2,7 @@
 
 
 function replaceStringNumber(value) {
-    if( value == "") {
+    if( value === "") {
         return 0;
     }
     
