@@ -3,7 +3,8 @@
 
 function replaceStringNumber(value) {
     if( value === "") {
-        return 0;
+        value = Number(value)
+        return value;
     }
     
     if( typeof value === "string" || value === null || typeof value === "boolean" ) {
@@ -11,7 +12,7 @@ function replaceStringNumber(value) {
         return value;
     } 
 
-    else if (Number.isNaN(value)) {
+    else if (value !== value) {
         return 0;
     } 
     
