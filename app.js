@@ -7,7 +7,7 @@ function replaceStringNumber(value) {
         return value;
     } 
 
-    else if (Object.is(value, NaN)) {
+    else if (Number.isNaN(value)) {
         return 0;
     } 
     
