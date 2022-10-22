@@ -1,5 +1,6 @@
 "use strict";
 
+
 let obj1 = {
 	firstName: "Витя",
 	lastName: "Киселёв",
@@ -62,3 +63,4 @@ function showObject(obj) {
         }
     }
 }
+
