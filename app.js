@@ -41,3 +41,16 @@ const person5 = {
 	quantitative: '19'
 };
 
+function sumCurried(value) {
+    return function(personal) {
+        return function(regional) {
+            return function(quantitative) {
+                return ((value * personal) * regional) * quantitative;
+            }
+        }
+    }
+}
+
+const tax3 = sumCurried(0.95)(0.98)(0.85);
+
+console.log(tax3(24500));
