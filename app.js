@@ -1,12 +1,11 @@
 "use strict";
 
-
 const person1 = {
 	name: 'Jack Truper',
     amount: '24500',
 	personal: '5',
 	regional: '2',
-	quantitative: '15'
+	quantitative: '15',
 };
 
 const person2 = {
@@ -14,7 +13,7 @@ const person2 = {
     amount: '27800',
 	personal: '7',
 	regional: '3',
-	quantitative: '17'
+	quantitative: '17',
 };
 
 const person3 = {
@@ -22,7 +21,7 @@ const person3 = {
     amount: '23300',
 	personal: '10',
 	regional: '5',
-	quantitative: '13'
+	quantitative: '13',
 };
 
 const person4 = {
@@ -30,7 +29,7 @@ const person4 = {
     amount: '22100',
 	personal: '12',
 	regional: '9',
-	quantitative: '20'
+	quantitative: '20',
 };
 
 const person5 = {
@@ -38,9 +37,8 @@ const person5 = {
     amount: '20350',
 	personal: '14',
 	regional: '10',
-	quantitative: '19'
+	quantitative: '19',
 };
-
 
 const name = prompt( `Введите имя пользователя чтобы узнать данные о скидке\n
 Список пользователей:\n
