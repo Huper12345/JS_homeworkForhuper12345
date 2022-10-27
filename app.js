@@ -47,11 +47,11 @@ function showObject(obj) {
         
         for (let key in objValue) {
             
-            if ( objValue[key] == null) {
+            if ( objValue[key] === null) {
                 objValue[key] = "null";
             }
 
-            if (typeof objValue[key] == 'object') {
+            if (typeof objValue[key] === 'object') {
                 memory = key + " - { ";
                 console.log(memory);
                 checkObj(objValue[key]);
