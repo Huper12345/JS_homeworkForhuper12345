@@ -42,6 +42,35 @@ const person5 = {
 };
 
 
+const name = prompt( `Введите имя пользователя чтобы узнать данные о скидке\n
+Список пользователей:\n
+${showProperty.call(person1, "name")}\n
+${showProperty.call(person2, "name")}\n
+${showProperty.call(person3, "name")}\n
+${showProperty.call(person4, "name")}\n
+${showProperty.call(person5, "name")}\n
+`, "John Black" )
+
+switch(name) {
+	case `${showProperty.call(person1, "name")}` :
+		showBuysum(person1)
+		break;
+	case `${showProperty.call(person2, "name")}` :
+		showBuysum(person2)
+		break;
+	case `${showProperty.call(person3, "name")}` :
+		showBuysum(person3)
+		break;
+	case `${showProperty.call(person4, "name")}` :
+		showBuysum(person4)
+		break;
+	case `${showProperty.call(person5, "name")}` :
+		showBuysum(person5)
+		break;
+	default :
+		alert("Неверное имя покупателя. Повторите попытку.")
+}
+
 
 function sumCurried(value) {
     return function(personal) {
@@ -60,20 +89,21 @@ function showAllDiscount(person) {
    (calcDiscount.call(person, "regional"))
    (calcDiscount.call(person, "quantitative"))
    
-   return result.toFixed(0) 
+   return result.toFixed(0); 
 }
 
 function calcDiscount(discount) {
     let result = ((100 - this[discount]) / 100 )
-    return result.toFixed(2)
+    return result.toFixed(2);
 }
 
 function showProperty(property) {
-    return this[property]
+    return this[property];
 }
 
 function showBuysum(person) {
     let result = `
+	Имя покупателя : ${showProperty.call(person, "name")}\n
     Cумма покупки = ${showProperty.call(person, "amount")}$\n
     Персональная скидка = ${showProperty.call(person, "personal")}% (${calcDiscount.call(person, "personal")})\n
     Региональная скидка = ${showProperty.call(person, "regional")}% (${calcDiscount.call(person, "regional")})\n
@@ -82,7 +112,3 @@ function showBuysum(person) {
     
     return alert(result);
 }
-
-
-showBuysum(person1);
-
