@@ -41,6 +41,8 @@ const person5 = {
 	quantitative: '19'
 };
 
+
+
 function sumCurried(value) {
     return function(personal) {
         return function(regional) {
@@ -51,27 +53,36 @@ function sumCurried(value) {
     }
 }
 
-const tax1 = sumCurried(calcDiscount.call(person1, "personal"))(calcDiscount.call(person1, "regional"))(calcDiscount.call(person1, "quantitative"));
-const tax2 = sumCurried(calcDiscount.call(person2, "personal"))(calcDiscount.call(person1, "regional"))(calcDiscount.call(person1, "quantitative"));
-const tax3 = sumCurried(calcDiscount.call(person3, "personal"))(calcDiscount.call(person1, "regional"))(calcDiscount.call(person1, "quantitative"));
-const tax4 = sumCurried(calcDiscount.call(person4, "personal"))(calcDiscount.call(person1, "regional"))(calcDiscount.call(person1, "quantitative"));
-const tax5 = sumCurried(calcDiscount.call(person5, "personal"))(calcDiscount.call(person1, "regional"))(calcDiscount.call(person1, "quantitative"));
-console.log(tax1(24500));
+function showAllDiscount(person) {
+   
+    let result = sumCurried(showProperty.call(person, "amount"))
+   (calcDiscount.call(person, "personal"))
+   (calcDiscount.call(person, "regional"))
+   (calcDiscount.call(person, "quantitative"))
+   
+   return result.toFixed(0) 
+}
 
-
-function calcDiscount(property) {
-    let result = ((100 - this[property]) / 100 )
+function calcDiscount(discount) {
+    let result = ((100 - this[discount]) / 100 )
     return result.toFixed(2)
-  }
+}
 
-  function showAm(amount) {
-    return this[amount]
-  }
+function showProperty(property) {
+    return this[property]
+}
+
+function showBuysum(person) {
+    let result = `
+    Cумма покупки = ${showProperty.call(person, "amount")}$\n
+    Персональная скидка = ${showProperty.call(person, "personal")}% (${calcDiscount.call(person, "personal")})\n
+    Региональная скидка = ${showProperty.call(person, "regional")}% (${calcDiscount.call(person, "regional")})\n
+    Количественная скидка = ${showProperty.call(person, "quantitative")}% (${calcDiscount.call(person, "quantitative")})\n 
+    Сумма покупки со скидкой = ${showAllDiscount(person)}$`;
+    
+    return alert(result);
+}
 
 
-console.log(calcDiscount.call(person5, "personal"));
-console.log(calcDiscount.call(person5, "regional"));
-console.log(calcDiscount.call(person5, "quantitative"));
-
-console.log(showAm.call(person5, "amount"));
+showBuysum(person1);
 
