@@ -51,6 +51,27 @@ function sumCurried(value) {
     }
 }
 
-const tax3 = sumCurried(0.95)(0.98)(0.85);
+const tax1 = sumCurried(calcDiscount.call(person1, "personal"))(calcDiscount.call(person1, "regional"))(calcDiscount.call(person1, "quantitative"));
+const tax2 = sumCurried(calcDiscount.call(person2, "personal"))(calcDiscount.call(person1, "regional"))(calcDiscount.call(person1, "quantitative"));
+const tax3 = sumCurried(calcDiscount.call(person3, "personal"))(calcDiscount.call(person1, "regional"))(calcDiscount.call(person1, "quantitative"));
+const tax4 = sumCurried(calcDiscount.call(person4, "personal"))(calcDiscount.call(person1, "regional"))(calcDiscount.call(person1, "quantitative"));
+const tax5 = sumCurried(calcDiscount.call(person5, "personal"))(calcDiscount.call(person1, "regional"))(calcDiscount.call(person1, "quantitative"));
+console.log(tax1(24500));
 
-console.log(tax3(24500));
+
+function calcDiscount(property) {
+    let result = ((100 - this[property]) / 100 )
+    return result.toFixed(2)
+  }
+
+  function showAm(amount) {
+    return this[amount]
+  }
+
+
+console.log(calcDiscount.call(person5, "personal"));
+console.log(calcDiscount.call(person5, "regional"));
+console.log(calcDiscount.call(person5, "quantitative"));
+
+console.log(showAm.call(person5, "amount"));
+
