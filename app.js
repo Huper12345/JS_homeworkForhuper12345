@@ -11,13 +11,13 @@ calcPhonesum();
 proposeBuyphone();
 
 function proposeBuyphone() {
-    let message = confirm( 'Желаете купить телефон?' );
+    const message = confirm( 'Желаете купить телефон?' );
 
-if (message == true) {
+if (message) {
     buyPhone();
 } else {
     alert( "Очень жаль! Когда будете готовы возвращайтесь." )
-}
+    }
 }
 
 function buyPhone() {
@@ -26,10 +26,15 @@ function buyPhone() {
     if (balance / phoneSum > 1) {
         
         let possibleBuy = balance / phoneSum;
-        let message = confirm ( `Вы можете купить ${possibleBuy.toFixed(0)} телефонов. Желаете продолжить?` );
+        const message = confirm ( `Вы можете купить ${possibleBuy.toFixed(0)} телефонов. Желаете продолжить?` );
 
-        if (message == true) {
-            for ( let i = 0; i < balance ; balance = balance - phoneSum ) {
+        if (message) {
+            
+            let contidion = phoneAccesories;
+
+            while (balance > contidion) {
+                balance = balance - phoneSum 
+                
                 if ( balance < phoneSum) {
                     alert( `Поздравляем с покупкой. Остаток баланса = ${showPrice(balance)}` );
                     
@@ -37,16 +42,18 @@ function buyPhone() {
                         
                         let buyAddaccesories = confirm ( 'Желаете купить дополнительные аксесуары на остаток средств на балансе?');
                         
-                        if(buyAddaccesories == true) {
+                        if (buyAddaccesories) {
 
                             let acsessories = balance / phoneAccesories;
-                           
-                            for (let i = 0; i < balance; balance = balance - phoneAccesories) {
+
+                            while (balance > contidion) {
+                                balance = balance - phoneAccesories
+
                                 if (balance < phoneAccesories) {
-                                    alert( `Вы купили еще ${Math.floor(acsessories) + getNoun(Math.floor(acsessories), " аксессуар", " аксессуара", " аксессуаров")}. Остаток баланса ${showPrice(balance)}` );
+                                        alert( `Вы купили еще ${Math.floor(acsessories) + getNoun(Math.floor(acsessories), " аксессуар", " аксессуара", " аксессуаров")}. Остаток баланса ${showPrice(balance)}` );
                                 }
                             }
-                        }
+                        } else break;
                     }
                 }
             }
@@ -72,7 +79,6 @@ function calcPhonesum() {
 function showPrice(value) {
     return value.toFixed(2) + "$";
 }
-
 
 
 // Эту функцию не совсем понял, поэтому взял готовое решение.
