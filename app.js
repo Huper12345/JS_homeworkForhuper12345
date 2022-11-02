@@ -146,9 +146,6 @@ switch(message) {
     case "Volodya":
         alert(`${showPerson(person4)}\nОбщая cумма покупки + скидка региона:\nПольша: ${allDiscountVolodyainPoland}$\nГреция: ${allDiscountVolodyainGreece}$\nВенгрия: ${allDiscountVolodyainHungrary}$\nСША: ${allDiscountVolodyainUSA}$`);
         break;
-
-    case "Моя скидка":
-        let prompt 
     default :
         alert("Неверное имя пользователя. Повторите попытку");
 }
