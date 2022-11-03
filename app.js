@@ -2,10 +2,10 @@
 
 const Person = {
 
-    personConstructor: function (name, amount, _quantitative) {
+    personConstructor: function (name, amount, quantitative) {
         this.name = name;
         this.amount = amount;
-        this.quantitative = quantitativeDiscount;
+        this.quantitative = quantitative;
         this.personal = discountValue;
         return this;
     }
@@ -81,6 +81,7 @@ const getMashaQuantative = quantitativeDiscount.bind(person3);
 
 const getVolodyaQuantative = quantitativeDiscount.bind(person4);
 
+
 function calcAllDiscount(value) {
     return function(personal) {
         return function(regional) {
@@ -151,5 +152,5 @@ function showPerson(person) {
 }
 
 function showDiscountinParsent(person) {
-    return `Персональная скидка: ${((1 - person.personal()) * 100).toFixed(0)}%\nСкидка от суммы купленных товаров ${((1 - person.quantitative()) * 100).toFixed(0)}%`
+    return `Персональная скидка: ${((1 - person.personal()) * 100).toFixed(0)}%\nСкидка от суммы купленных товаров ${((1 - quantitativeDiscount.call(person)) * 100).toFixed(0)}%`
 }
