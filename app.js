@@ -40,8 +40,6 @@ function discountValue() {
         return calcDiscountValue(15);
     } else if (this.amount >= 50000) {
         return calcDiscountValue(20);
-    } else  {
-        return calcDiscountValue(20);
     }
 
 }
@@ -70,8 +68,6 @@ function quantitativeDiscount() {
         return calcDiscountValue(8);
     } else if (this.quantitative >= 10) {
         return calcDiscountValue(10)
-    } else {
-        return calcDiscountValue(10);
     }
 }
 
